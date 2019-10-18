@@ -22,7 +22,7 @@ LPVOID method = GetProcAddress(kernel32, "LoadLibraryW"); //getting loadlibrary 
 
 void initialize(HANDLE process, const wchar_t* path) //'initialize' function to inject your dll into process.
 {
-	int length = wcslen(path) + 1; //gets the length of the string so we can know how much mem we need
+	int length = wcslen(path) + 1; //gets the length of the string so we can know how much memory we need.
 
 	LPVOID vAllocEx = VirtualAllocEx(process, NULL, length * 2, MEM_COMMIT, PAGE_EXECUTE); //allocating new memory for our dll from path.
 	WriteProcessMemory(process, VirtualAllocEx, path, length * 2, NULL); //writeprocessmemory to write our dllpath into application.
